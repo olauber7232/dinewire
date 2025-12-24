@@ -2,7 +2,7 @@
 // PURE FRONTEND – Backend/API removed
 // Optimized for GitHub Hosting & D-U-N-S Verification
 // Tech: React 18 + TypeScript + Tailwind CSS
-
+import { Router } from "wouter";
 import { Link, Route, Switch } from "wouter";
 
 import {
@@ -401,7 +401,10 @@ export default function App() {
   }, []);
 
   return (
+  <Router base="/dinewire">
     <div className="min-h-screen bg-white text-gray-900">
+
+      {/* HEADER */}
       <header className="border-b border-orange-200 sticky top-0 bg-white z-50">
         <div className="container mx-auto px-4 py-3 flex justify-between items-center">
           <div className="flex items-center gap-3">
@@ -414,6 +417,7 @@ export default function App() {
               DineWire
             </span>
           </div>
+
           <nav className="flex gap-6 text-sm font-medium items-center">
             <Link href="/">Home</Link>
             <Link href="/pricing">Pricing</Link>
@@ -422,6 +426,7 @@ export default function App() {
         </div>
       </header>
 
+      {/* ROUTES */}
       <Switch>
         <Route path="/" component={Home} />
         <Route path="/pricing" component={Pricing} />
@@ -430,32 +435,47 @@ export default function App() {
         <Route path="/terms-and-conditions" component={Terms} />
       </Switch>
 
+      {/* FOOTER */}
       <footer className="bg-gray-900 text-gray-300 mt-24">
         <div className="container mx-auto px-6 py-10 grid md:grid-cols-4 gap-8">
           <div>
-            <img src="https://i.postimg.cc/XvZgy00y/brand-logo.jpg" className="h-10 mb-2" />
-            <p className="text-sm">Professional websites and WhatsApp ordering for restaurants.</p>
+            <img
+              src="https://i.postimg.cc/XvZgy00y/brand-logo.jpg"
+              className="h-10 mb-2"
+            />
+            <p className="text-sm">
+              Professional websites and WhatsApp ordering for restaurants.
+            </p>
           </div>
+
           <div>
             <h4 className="text-white font-semibold mb-2">Company</h4>
             <Link href="/about" className="block text-sm">About</Link>
           </div>
+
           <div>
             <h4 className="text-white font-semibold mb-2">Legal</h4>
             <Link href="/privacy-policy" className="block text-sm">Privacy Policy</Link>
             <Link href="/terms-and-conditions" className="block text-sm">Terms & Conditions</Link>
           </div>
+
           <div>
             <h4 className="text-white font-semibold mb-2">Contact</h4>
-            <p className="flex items-center gap-2 text-sm"><PhoneIcon className="h-4 w-4" /> +91 83027 18516</p>
+            <p className="flex items-center gap-2 text-sm">
+              <PhoneIcon className="h-4 w-4" /> +91 83027 18516
+            </p>
             <p className="text-sm">{CONTACT_EMAIL}</p>
-            <a href={WHATSAPP} className="text-sm text-orange-400">Chat on WhatsApp</a>
+            <a href={WHATSAPP} className="text-sm text-orange-400">
+              Chat on WhatsApp
+            </a>
           </div>
         </div>
+
         <div className="border-t border-gray-700 text-center text-xs py-3">
           © {new Date().getFullYear()} DineWire. All rights reserved.
         </div>
       </footer>
+
     </div>
-  );
-}
+  </Router>
+);
